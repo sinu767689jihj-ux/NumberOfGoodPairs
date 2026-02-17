@@ -1,0 +1,26 @@
+import java.util.HashMap;
+public class NumberOfGoodPairsUsingHashMap{
+    public int numIdenticalPairs(int[] nums){
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int count=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            int n=nums[i];
+            if(map.containsKey(n))
+            {
+                count=count+map.get(n);
+                map.put(n,map.get(n)+1);
+            }
+            else{
+                map.put(n,1);
+            }
+        }
+        return count;
+    }
+    public static void main(String[] args)
+    {
+        NumberOfGoodPairsUsingHashMap obj=new NumberOfGoodPairsUsingHashMap();
+        int[] nums={1,2,3,4,1,2,3};
+        System.out.println(obj.numIdenticalPairs(nums));
+    }
+}
